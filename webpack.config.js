@@ -28,13 +28,7 @@ const optimization = function() {
 
 const cssLoader = exstra => {
 	const loader = [
-		{
-			loader: MiniCssExtractPlugin.loader,
-			options: {
-				hmr: isDev,
-				reloadAll: true
-			}
-		},
+		isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
 		'css-loader'
 	]
 
@@ -109,7 +103,11 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: jsLoaders()
-      }
+			},
+			{
+				test: /\.svg$/,
+				use: ['file-loader']
+			}
     ],
   }
 }
