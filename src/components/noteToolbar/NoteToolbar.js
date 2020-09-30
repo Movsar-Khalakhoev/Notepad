@@ -5,10 +5,11 @@ import {$} from '../../core/dom'
 export class NoteToolbar extends Component {
 	static className = '.right__toolbar'
 
-	constructor($componentRoot) {
+	constructor($componentRoot, options) {
 		super($componentRoot, {
 			name: 'NoteToolbar',
-			listeners: []
+			listeners: [],
+			...options
 		}),
 		this.parentClass = '.right'
 	}

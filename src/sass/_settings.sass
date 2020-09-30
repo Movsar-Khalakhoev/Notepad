@@ -20,6 +20,42 @@ body
 	width: 19px
 	height: 19px
 
+.tag
+	display: flex
+	align-items: center
+	position: relative
+	width: 100%
+	max-width: 90px
+	height: 100%
+	font-size: 7px
+	margin-right: 4px
+	padding-left: 2px
+	border-radius: 3px
+	background-color: tomato
+	&:last-child
+		margin-right: 0
+	&:hover .tag-delete
+		visibility: visible
+
+.tag-delete
+	display: flex
+	align-items: center
+	justify-content: center
+	height: 20px
+	width: 20px
+	cursor: pointer
+	visibility: hidden
+	&::before, &::after
+		position: absolute
+		content: ''
+		width: 2px
+		background-color: #C9D6DF
+		height: 15px
+		border-radius: 1px
+	&::before
+		transform: rotate(45deg)
+	&::after
+		transform: rotate(-45deg)
 ::-webkit-scrollbar
 	width: 6px
 

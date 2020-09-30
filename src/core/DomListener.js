@@ -1,9 +1,7 @@
 import {functionName} from './utils'
-import {$} from './dom'
 
 export class DomListener {
 	constructor($componentRoot, listeners) {
-		this.$componentRoot = $componentRoot
 		this.listeners = listeners
 	}
 
@@ -16,16 +14,14 @@ export class DomListener {
 				throw new Error(error)
 			}
 			this[method] = this[method].bind(this)
-			$(this.$componentRoot).on(listener, this[method])
+			this.$componentRoot.on(listener, this[method])
 		})
-
-		setTimeout(this.removeDOMListeners.bind(this), 3000)
 	}
 
 	removeDOMListeners() {
 		this.listeners.forEach(listener => {
 			const method = functionName(listener)
-			$(this.$componentRoot).off(listener, this[method])
+			this.$componentRoot.off(listener, this[method])
 		})
 	}
 }
