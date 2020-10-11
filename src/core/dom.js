@@ -6,15 +6,21 @@ class Dom {
 	}
 
 	html(node, mode = '') {
-		if (node && !mode) {
+		if (node === ' ' && !mode) {
+			this.$el.innerHTML = ''
+		} else if (node && !mode) {
 			this.$el.innerHTML = node
 			return this
 		} else if (node && mode === 'add') {
 			this.$el.innerHTML += node
 			return this
 		} else {
-			return this.$el.innerHTML.trim()
+			return this.$el.innerHTML
 		}
+	}
+
+	value(text) {
+		this.$el.value = text
 	}
 
 	on(eventName, func) {
@@ -70,6 +76,10 @@ class Dom {
 
 	find(selector) {
 		return this.$el.querySelector(selector)
+	}
+
+	findAll(selector) {
+		return this.$el.querySelectorAll(selector)
 	}
 }
 
