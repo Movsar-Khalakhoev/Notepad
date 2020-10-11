@@ -24,8 +24,9 @@ export function createNote() {
 		'title': 'Заметка-',
 		'createDate': date.toLocaleString(),
 		'activeDate': 'Сейчас',
-		'inner': `${new Date().getTime()}`,
-		'noteTags': []
+		'inner': ` `,
+		'noteTags': [],
+		'exstractedIntervals': {}
 	}
 }
 
