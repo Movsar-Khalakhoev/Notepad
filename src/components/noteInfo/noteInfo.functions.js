@@ -17,7 +17,7 @@ export function changeInfoInNoteInfo($componentRoot, notes, activeNote, tags) {
 		tagsContainer.html(tagsLayout)
 
 		createDateElement.textContent(
-			notes[activeNote.numb].createDate.toLocaleString().slice(1, -3)
+			notes[activeNote.numb].createDate.toLocaleString().slice(0, -3)
 			)
 	} else {
 		titleElement.attr('contenteditable', false)
