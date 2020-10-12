@@ -102,6 +102,7 @@ export class NoteInfo extends Component {
 	}
 
 	onClick(event) {
+		if (!this.activeNote.numb) return
 		const target = $(event.target)
 		const notes = this.notes[this.activeNote.numb].noteTags
 
