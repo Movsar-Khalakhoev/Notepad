@@ -16,7 +16,7 @@ export class Field extends Component {
 	constructor($componentRoot, options) {
 		super($componentRoot, {
 			name: 'Field',
-			listeners: ['input', 'mouseup'],
+			listeners: ['input', 'mouseup', 'mousedown'],
 			...options
 		})
 		this.parentClass = '.right'
@@ -61,12 +61,15 @@ export class Field extends Component {
 			), 400)
 	}
 
+	onMousedown(event) {
+		window.getSelection().removeAllRanges()
+	}
+
 	onMouseup(event) {
 		this.selection = selectionInfo(
 			this.$componentRoot,
 			this.notes[this.activeNote.numb].exstractedIntervals
 		)
-
 		this.$emit('field:selectedText', this.selection.state)
 	}
 
