@@ -7,6 +7,7 @@ export function changeInfoInNoteInfo($componentRoot, notes, activeNote, tags) {
 	let tagsLayout = ' '
 
 	if (activeNote.numb || activeNote.numb === 0) {
+		titleElement.attr('contenteditable', true)
 		titleElement.textContent(notes[activeNote.numb].title)
 		tags.forEach(tag => {
 			if (notes[activeNote.numb].noteTags.includes(tag.name)) {
@@ -16,19 +17,24 @@ export function changeInfoInNoteInfo($componentRoot, notes, activeNote, tags) {
 		tagsContainer.html(tagsLayout)
 
 		createDateElement.textContent(
-			notes[activeNote.numb].createDate.toLocaleString().slice(1, -3)
-		)
+			notes[activeNote.numb].createDate.toLocaleString().slice(0, -3)
+			)
 	} else {
+		titleElement.attr('contenteditable', false)
 		titleElement.textContent('')
 		createDateElement.textContent('')
 	}
 }
 
 export function addTagsList($componentRoot, notes, activeNote, tags) {
+	const addContainer = $('[data-el="noteInfoAdd"]', $componentRoot)
 	if (!activeNote.numb && activeNote.numb !== 0) {
+		if ($('[data-el="noteInfoList"]', $componentRoot).$el) {
+			addContainer.$el.
+			removeChild($('[data-el="noteInfoList"]', $componentRoot).$el)
+		}
 		return
 	}
-	const addContainer = $('[data-el="noteInfoAdd"]', $componentRoot)
 	const listLayout = $.create('ul', 'right__info-add-list')
 	listLayout.setData('el', 'noteInfoList')
 	tags.forEach(tag => {

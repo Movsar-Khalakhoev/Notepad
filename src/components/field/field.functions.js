@@ -1,9 +1,10 @@
 export function changeField($componentRoot, notes, activeNote) {
 	if (!activeNote.numb && activeNote.numb !== 0) {
+		$componentRoot.attr('contenteditable', false)
 		$componentRoot.html('<h1>Нет активной заметки</h1>')
 		return
 	}
-
+	$componentRoot.attr('contenteditable', true)
 	$componentRoot.html(notes[activeNote.numb].inner)
 }
 
