@@ -66,6 +66,7 @@ export class Field extends Component {
 	}
 
 	onMouseup(event) {
+		if (!this.activeNote.numb) return
 		this.selection = selectionInfo(
 			this.$componentRoot,
 			this.notes[this.activeNote.numb].exstractedIntervals

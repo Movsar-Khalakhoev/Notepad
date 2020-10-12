@@ -55,6 +55,15 @@ class Dom {
 		this.$el.removeAttribute(`data-${type}`)
 	}
 
+	attr(attribute, value) {
+		if (!attribute) return
+		if (value || value === false) {
+			this.$el.setAttribute(attribute, value)
+		} else {
+			return this.$el.getAttrubute(attribute)
+		}
+	}
+
 	closest(selector) {
 		return $(this.$el.closest(selector))
 	}
