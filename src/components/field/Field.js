@@ -66,7 +66,7 @@ export class Field extends Component {
 	}
 
 	onMouseup(event) {
-		if (!this.activeNote.numb) return
+		if (!this.activeNote.target) return
 		this.selection = selectionInfo(
 			this.$componentRoot,
 			this.notes[this.activeNote.numb].exstractedIntervals
@@ -106,5 +106,8 @@ export class Field extends Component {
 		const sel = window.getSelection()
 		sel.removeAllRanges()
 		sel.addRange(range)
+
+		this.notes[this.activeNote.numb].inner = this.$componentRoot.html()
+		storage('notes', this.notes)
 	}
 }
